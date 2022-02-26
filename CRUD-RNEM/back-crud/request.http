@@ -1,0 +1,30 @@
+### LISTAR TODAS LAS PERSONAS
+GET http://localhost:3050/persons HTTP/1.1
+
+### OPTENER PERSONA POR ID
+GET http://localhost:3050/person/1 HTTP/1.1
+
+### GUARDAR PERSONA NUEVA
+POST http://localhost:3050/person HTTP/1.1
+Content-Type: application/json
+
+{
+    "person_name": "Otro mas",
+    "person_age": 15,
+    "person_gender": "M"
+}
+
+### ACTUALIZAR  PERSONA
+PUT http://localhost:3050/person/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "person_id": 1,
+	"person_name": "Israel modificado",
+    "person_age": 15,
+    "person_gender": "M"
+}
+
+### ELIMINAR PERSONA
+DELETE http://localhost:3050/person/5 HTTP/1.1
+
