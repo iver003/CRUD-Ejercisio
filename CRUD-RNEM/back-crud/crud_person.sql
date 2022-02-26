@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 5.7.31 : Database - crud_person
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -21,7 +22,7 @@ CREATE TABLE `persons` (
   `person_id` int(11) NOT NULL AUTO_INCREMENT,
   `person_name` varchar(100) NOT NULL,
   `person_age` tinyint(4) NOT NULL,
-  `person_gender` enum('M','F') NOT NULL,
+  `person_single` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`person_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

@@ -29,6 +29,7 @@ app.get("/persons", (req, res) => {
 	connection.query(sql, (error, results) => {
 		if (error) throw error;
 		if (results.length > 0) {
+			console.log(results);
 			res.json(results);
 		} else {
 			res.json("No hay resultados");

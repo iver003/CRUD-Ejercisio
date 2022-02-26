@@ -9,7 +9,7 @@ const ListPerson = ({ persons, setUpdatedList, setIdUpdate, setPerson }) => {
 			setPerson({
 				person_name: "",
 				person_age: "",
-				person_gender: "",
+				person_single: false,
 			});
 		});
 	};
@@ -37,7 +37,7 @@ const ListPerson = ({ persons, setUpdatedList, setIdUpdate, setPerson }) => {
 									<th>ID</th>
 									<th>NOMBRE</th>
 									<th>EDAD</th>
-									<th>SEXO</th>
+									<th>SOLTERO</th>
 									<th> </th>
 								</tr>
 							</thead>
@@ -47,7 +47,7 @@ const ListPerson = ({ persons, setUpdatedList, setIdUpdate, setPerson }) => {
 										<td>{person.person_id}</td>
 										<td>{person.person_name}</td>
 										<td>{person.person_age}</td>
-										<td>{person.person_gender}</td>
+										<td>{person.person_single ? "Si" : "No"}</td>
 										<th>
 											<div className="text-center">
 												<button className="btn btn-sm btn-primary me-2" title="Editar" onClick={() => handleUpdate(person.person_id)}>

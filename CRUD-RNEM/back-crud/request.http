@@ -11,7 +11,7 @@ Content-Type: application/json
 {
     "person_name": "Otro mas",
     "person_age": 15,
-    "person_gender": "M"
+    "person_single": "M"
 }
 
 ### ACTUALIZAR  PERSONA
@@ -22,7 +22,7 @@ Content-Type: application/json
     "person_id": 1,
 	"person_name": "Israel modificado",
     "person_age": 15,
-    "person_gender": "M"
+    "person_single": "M"
 }
 
 ### ELIMINAR PERSONA

@@ -2,7 +2,7 @@ import { TiCancel, TiTick, TiUserAdd } from "react-icons/ti";
 import { apiSetPerson, apiUpdatePerson } from "../utils/httpClient.js";
 
 const Formulario = ({ person, setPerson, setUpdatedList, idUpdate, setIdUpdate }) => {
-	const { person_name, person_age, person_gender } = person;
+	const { person_name, person_age, person_single } = person;
 
 	let titulo = idUpdate == "" ? "Agregar Persona" : "Editar Persona";
 	let color = idUpdate == "" ? "success" : "info";
@@ -13,13 +13,13 @@ const Formulario = ({ person, setPerson, setUpdatedList, idUpdate, setIdUpdate }
 		setPerson({
 			person_name: "",
 			person_age: "",
-			person_gender: "",
+			person_single: 0,
 		});
 	};
 
 	const handleChange = (e) => {
 		let name = e.target.name;
-		let value = e.target.value;
+		let value = e.target.type == "checkbox" ? e.target.checked : e.target.value;
 		setPerson((old) => ({ ...old, [name]: value }));
 	};
 
@@ -42,19 +42,13 @@ const Formulario = ({ person, setPerson, setUpdatedList, idUpdate, setIdUpdate }
 			return;
 		}
 
-		if (!person_gender.trim()) {
-			e.target.elements.person_gender.focus();
-			msgError("No puede estar el sexo vacio");
-			return;
-		}
-
 		if (idUpdate == "") {
 			apiSetPerson(person).then((data) => {
 				setUpdatedList(true);
 				setPerson({
 					person_name: "",
 					person_age: "",
-					person_gender: "",
+					person_single: 0,
 				});
 			});
 			msgOk("Se guardo la información");
@@ -65,7 +59,7 @@ const Formulario = ({ person, setPerson, setUpdatedList, idUpdate, setIdUpdate }
 				setPerson({
 					person_name: "",
 					person_age: "",
-					person_gender: "",
+					person_single: 0,
 				});
 			});
 			msgOk("Se actualizo la información");
@@ -111,14 +105,12 @@ const Formulario = ({ person, setPerson, setUpdatedList, idUpdate, setIdUpdate }
 							<input type="number" className="form-control" name="person_age" id="person_age" placeholder="Captura edad" value={person_age} onChange={handleChange} />
 						</div>
 						<div className="mb-3">
-							<label htmlFor="person_gender" className="form-label">
-								Sexo
-							</label>
-							<select name="person_gender" className="form-select mb-2" value={person_gender} onChange={handleChange}>
-								<option value="">Elige uno</option>
-								<option value="F">Femenino</option>
-								<option value="M">Masculino</option>
-							</select>
+							<div className="form-check">
+								<input name="person_single" checked={person_single} onChange={handleChange} className="form-check-input" type="checkbox" id="person_single" />
+								<label className="form-check-label" htmlFor="person_single">
+									¿Soltero?
+								</label>
+							</div>
 						</div>
 						{idUpdate == "" ? (
 							<button type="submit" className={`btn btn-${color}`}>

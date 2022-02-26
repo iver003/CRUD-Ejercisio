@@ -7,7 +7,7 @@ const App = () => {
 	const [person, setPerson] = useState({
 		person_name: "",
 		person_age: "",
-		person_gender: "",
+		person_single: 0,
 	});
 	const [persons, setPersons] = useState([]);
 	const [updatedList, setUpdatedList] = useState(false);
